@@ -1,0 +1,13 @@
+{
+  "name": "asp.net",
+  "private": true,
+  "dependencies": {
+    "underscore": "*",
+    "jquery": "3.1.0",
+    "jquery-validation": "1.15.0",
+    "jquery-validation-unobtrusive": "3.2.6",
+    "bootstrap": "~3.3.7",
+    "gmaps": "~0.4.24",
+    "travelmap": "~1.0.2"
+  }
+}

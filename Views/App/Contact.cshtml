@@ -1,0 +1,21 @@
+﻿@model webcore.ViewModels.ContactViewModel
+@{ 
+    ViewBag.Title = "Contact page";
+}
+
+@section scripts{
+    <script type="text/javascript" src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script type="text/javascript" src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+
+<h1>Contact</h1>
+<form method="post">
+    <label asp-for="Name">Name</label>
+    <input  asp-for="Name" />
+    <label asp-for="Email">Email</label>
+    <input type="email" asp-for="Email" />
+    <label asp-for="Message">Message</label>
+    <textarea cols="20" rows="10" asp-for="Message"></textarea>
+    <span asp-validation-for="Message"></span>
+    <input type="submit" value="Send"/>
+</form>
