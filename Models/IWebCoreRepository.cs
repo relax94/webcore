@@ -8,6 +8,7 @@ namespace webcore.Models
 {
     public interface IWebCoreRepository
     {
-        Task<IEnumerable<Trip>> GetAllTrips<T>();
+        Task<List<T>> GetRecordsTaskAsync<T>() where T : class;
+        Task<int> InsertRecordTaskAsync<T>(T entity) where T : class;
     }
 }

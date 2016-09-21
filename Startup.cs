@@ -12,6 +12,8 @@ using webcore.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Newtonsoft.Json.Serialization;
+using tusdotnet.Middleware;
+using tusdotnet.Models;
 
 namespace webcore
 {
@@ -34,6 +36,7 @@ namespace webcore
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            
 
             services.AddLogging();
             services.AddIdentity<WebCoreUser, IdentityRole>(config =>
@@ -74,9 +77,17 @@ namespace webcore
                 loggerFactory.AddConsole(LogLevel.Error);
             }
 
+            
             //app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseIdentity();
+
+            app.UseMiddleware<UploadMiddleware>(new DefaultTusConfiguration
+            {
+                Store = new TusDiskStore(@"E:\tusfiles\"),
+                UrlPath = "/files"
+            });
+            
 
             app.UseMvc(config =>
             {
@@ -86,6 +97,8 @@ namespace webcore
                     defaults: new { controller = "App", action = "Index" }
                     );
             });
+
+            
         }
     }
 }

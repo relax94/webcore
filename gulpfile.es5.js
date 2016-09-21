@@ -32,3 +32,19 @@ gulp.task('watch.ts', ['ts'], function () {
 
 gulp.task('default', ['scriptsNStyle', 'watch']);
 
+/* react */
+
+var browserify = require('browserify');
+var babelify = require('babelify');
+var source = require('vinyl-source-stream');
+
+gulp.task('buildReact', function () {
+    return browserify({ entries: './Scripts/test.jsx', extensions: ['.jsx'], debug: true }).transform('babelify', { presets: ['es2015', 'react'] }).bundle().pipe(source('bundle.js')).pipe(gulp.dest('./wwwroot/app/react/dist'));
+});
+
+//gulp.task('watch.react', ['buildReact'], function () {
+//    gulp.watch('Scripts/*.jsx', ['buildReact']);
+//});
+
+//gulp.task('default', ['watch']);
+

@@ -17,20 +17,16 @@ namespace webcore.Models
             _context = context;
             _logger = logger;
         }
-
-        public async Task<IEnumerable<Trip>> GetAllTrips<T>()
+        
+        public async Task<List<T>> GetRecordsTaskAsync<T>() where T : class
         {
-            try
-            {
-                throw new Exception("OOOOOOOOOOOOOOOOOOOOOOOOOOO");
-                return await Task.Factory.StartNew(() => _context.Trips.ToList());
-            }
-            catch(Exception ex)
-            {
-                _logger.LogError(ex.Message);
-                return null;
-            }
+            return await Task.Factory.StartNew(() => this._context.Set<T>().ToList<T>());
         }
 
+        public async Task<int> InsertRecordTaskAsync<T>(T entity) where T : class
+        {
+            await Task.Factory.StartNew(() => this._context.Set<T>().Add(entity));
+            return this._context.SaveChanges();
+        }
     }
 }

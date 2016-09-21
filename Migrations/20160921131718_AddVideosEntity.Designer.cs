@@ -8,9 +8,10 @@ using webcore.Models;
 namespace webcore.Migrations
 {
     [DbContext(typeof(WebCoreContext))]
-    partial class WebCoreContextModelSnapshot : ModelSnapshot
+    [Migration("20160921131718_AddVideosEntity")]
+    partial class AddVideosEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")

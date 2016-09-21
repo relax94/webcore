@@ -22,3 +22,4 @@ var StopsList = (function () {
     return StopsList;
 }());
 exports.StopsList = StopsList;
+//# sourceMappingURL=stopslist.js.map
