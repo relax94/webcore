@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "Smapme Index";
+}
+
+
+
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/">Smapme</a>
+    </div>
+    <div class="container">
+        <button type="button" class="btn btn-default  navbar-btn">Sign in</button>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">
+        <script src="//vjs.zencdn.net/5.8/video.min.js"></script>
+        <video id="really-cool-video" class="video-js vjs-default-skin" controls
+               preload="auto" width="640" height="264" poster="really-cool-video-poster.jpg"
+               data-setup='{}'>
+            <source src="http://localhost:4000/uploads/000.mp4" type="video/mp4">
+            <source src="really-cool-video.webm" type="video/webm">
+            <p class="vjs-no-js">
+                To view this video please enable JavaScript, and consider upgrading to a web browser
+                that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+            </p>
+        </video>
+        <my-app>
+            <div class="loader">
+                <h1>LOADING ...</h1>
+            </div>
+        </my-app>
+    </div>
+</div>
+
+@section scripts{
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script>
+        function initMap() {
+            // Create a map object and specify the DOM element for display.
+            //var map = new google.maps.Map(document.getElementById('map'), {
+            //  center: {lat: -34.397, lng: 150.644},
+            //  scrollwheel: false,
+            //  zoom: 8
+            //});
+        }
+
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3nVWAP5Xv87ceDJvkeViYKcr_Un_QhSg&callback=initMap"
+            type="text/javascript"></script>
+    <script type="text/javascript" src="~/lib/gmaps/gmaps.js"></script>
+    <script type="text/javascript" src="~/lib/travelmap/travelmap.js"></script>
+    <script type="text/javascript" src="~/js/tus.js"></script>
+
+    @*<script>
+            (function () {
+                System.config({
+                    packages: {
+                        'app': { defaultExtension: 'js' },
+                        'lib': { defaultExtension: 'js' },
+                    }
+                });
+
+                System.import('app/boot')
+                    .then(null, console.error.bind(console));
+            })();
+        </script>*@
+
+    <script type="text/javascript" src="~/lib/npmlibs/core-js/client/shim.min.js"></script>
+    <script src="~/lib/npmlibs/zone.js/dist/zone.js"></script>
+    <script src="~/lib/npmlibs/reflect-metadata/Reflect.js"></script>
+    <script src="~/lib/npmlibs/systemjs/dist/system.src.js"></script>
+    @*<script>System.packageWithIndex = true;</script>*@
+    <!-- 2. Configure SystemJS -->
+    <script src="~/js/systemjs.config.js"></script>
+    <script>
+        System.import('app/boot')
+       .then(null, console.error.bind(console));
+    </script>
+}
+
+
+
+@*<nav id="footer" class="navbar navbar-default">
+        &copy; 2016 4LostKings
+    </nav>*@
